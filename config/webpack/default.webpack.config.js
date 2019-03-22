@@ -2,6 +2,7 @@
 // Created by payfazz team
 // If you want to contribute visit here : https://github.com/payfazz/porsea
 var path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 var rootPath = `${__dirname}/../..`;
 var mode = process.env.NODE_ENV || "development";
@@ -14,7 +15,7 @@ var config = {
   },
   output: {
     path: path.resolve(rootPath, "build"),
-    filename: "[contenthash].js"
+    filename: "[name].[contenthash].js"
   },
   module: {
     rules: [
@@ -37,6 +38,30 @@ var config = {
         }
       }
     ]
+  },
+  devtool: process.env.NODE_ENV == "development" ? "eval" : "cheap-source-map",
+  optimization: {
+    splitChunks: {
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendors: {
+          name: "vendors",
+          chunks: "async",
+          test: /[\\/]node_modules[\\/]/
+        }
+      }
+    },
+    minimize: process.env.NODE_ENV == "production",
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true
+      })
+    ],
+    removeAvailableModules: true,
+    removeEmptyChunks: true,
+    mergeDuplicateChunks: true
   }
 };
 
