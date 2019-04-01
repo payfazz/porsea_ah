@@ -2,9 +2,10 @@
   "name": "porsea",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "bin": {
+    "porsea": "./index.js"
+  },
   "scripts": {
-    "build": "webpack --config config/webpack/default.webpack.config.js",
     "dev": "webpack-dev-server --config config/webpack/default.webpack.config.js",
     "dashboard": "webpack-dashboard -- webpack-dev-server --config config/webpack/default.webpack.config.js"
   },
@@ -21,7 +22,8 @@
   "homepage": "https://github.com/payfazz/porsea#readme",
   "dependencies": {
     "react": "16.8.4",
-    "react-dom": "16.8.4"
+    "react-dom": "16.8.4",
+    "yargs": "^13.2.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
