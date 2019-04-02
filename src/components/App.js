@@ -1,3 +1,7 @@
+// Porsea Framework
+// Created by Cashfazz Team
+// To contribute visit: https://github.com/payfazz/porsea
+
 import React, { Component } from "react";
 import "../scss/index.scss";
 

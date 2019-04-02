@@ -1,3 +1,7 @@
+// Porsea Framework
+// Created by Cashfazz Team
+// To contribute visit: https://github.com/payfazz/porsea
+
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");

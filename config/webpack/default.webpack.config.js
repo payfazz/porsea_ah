@@ -1,7 +1,9 @@
-// Porsea framework
-// Created by payfazz team
-// If you want to contribute visit here : https://github.com/payfazz/porsea
-var path = require("path");
+// Porsea Framework
+// Created by Cashfazz Team
+// To contribute visit: https://github.com/payfazz/porsea
+
+const path = require("path");
+const LOCATION = require("../../location");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -10,25 +12,23 @@ const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
-const rootPath = `${__dirname}/../..`;
-const publicPath = "/";
+const publicPath = "'/'";
 const mode = process.env.NODE_ENV || "development";
 
 var config = {
   mode: mode,
   entry: {
     addon: ["@babel/polyfill"],
-    main: path.resolve(rootPath, "./src/index.js")
+    main: path.resolve(LOCATION.ROOT_PATH, "./src/index.js")
   },
   output: {
-    path: path.resolve(rootPath, "build"),
+    path: path.resolve(LOCATION.ROOT_PATH, "build"),
     filename: "[name].[contenthash].js"
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -107,7 +107,7 @@ var config = {
       filename: "style.[contenthash].css"
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../../src/index.html")
+      template: LOCATION.INDEX_HTML_PATH
     }),
     new CircularDependencyPlugin({
       exclude: /a\.js|node_modules/,
