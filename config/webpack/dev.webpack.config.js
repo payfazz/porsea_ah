@@ -16,10 +16,10 @@ var config = {
   mode: "development",
   entry: {
     addon: ["@babel/polyfill"],
-    main: path.resolve(LOCATION.ROOT_PATH, "./src/index.js")
+    main: path.resolve(LOCATION.CURRENT_DIRECTORY, "./src/index.js")
   },
   output: {
-    path: path.resolve(LOCATION.ROOT_PATH, "build"),
+    path: path.resolve(LOCATION.CURRENT_TERMINAL_PATH, "build"),
     filename: "[name].[hash].js"
   },
   module: {
