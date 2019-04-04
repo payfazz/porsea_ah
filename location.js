@@ -5,8 +5,10 @@
 const path = require("path");
 
 const LOCATION = {
-  ROOT_PATH: `${__dirname}`,
-  INDEX_HTML_PATH: path.join(__dirname, "/src/index.html")
+  CURRENT_DIRECTORY: `${__dirname}`,
+  PUBLIC_PATH: "/",
+  CURRENT_TERMINAL_PATH: process.cwd(),
+  INDEX_HTML_PATH: path.join(process.cwd(), "/src/index.html")
 };
 
 module.exports = LOCATION;

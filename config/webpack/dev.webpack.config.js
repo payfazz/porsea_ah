@@ -4,7 +4,7 @@
 
 const path = require("path");
 const LOCATION = require("../../location");
-const TerserPlugin = require("terser-webpack-plugin");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
@@ -12,18 +12,15 @@ const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
-const publicPath = "'/'";
-const mode = process.env.NODE_ENV || "development";
-
 var config = {
-  mode: mode,
+  mode: "development",
   entry: {
     addon: ["@babel/polyfill"],
     main: path.resolve(LOCATION.ROOT_PATH, "./src/index.js")
   },
   output: {
     path: path.resolve(LOCATION.ROOT_PATH, "build"),
-    filename: "[name].[contenthash].js"
+    filename: "[name].[hash].js"
   },
   module: {
     rules: [
@@ -52,7 +49,7 @@ var config = {
           loader: "file-loader",
           options: {
             name: "assets/image/[name]-[hash].[ext]",
-            publicPath
+            publicPath: LOCATION.PUBLIC_PATH
           }
         }
       },
@@ -62,7 +59,7 @@ var config = {
           loader: "file-loader",
           options: {
             name: "assets/media/[name]-[hash].[ext]",
-            publicPath
+            publicPath: LOCATION.PUBLIC_PATH
           }
         }
       },
@@ -72,13 +69,13 @@ var config = {
           loader: "file-loader",
           options: {
             name: "assets/font/[name]-[hash].[ext]",
-            publicPath
+            publicPath: LOCATION.PUBLIC_PATH
           }
         }
       }
     ]
   },
-  devtool: process.env.NODE_ENV == "development" ? "eval" : "cheap-source-map",
+  devtool: "cheap-source-map",
   optimization: {
     splitChunks: {
       maxInitialRequests: Infinity,
@@ -91,20 +88,13 @@ var config = {
         }
       }
     },
-    minimize: process.env.NODE_ENV == "production",
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true
-      })
-    ],
     removeAvailableModules: true,
     removeEmptyChunks: true,
     mergeDuplicateChunks: true
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.[contenthash].css"
+      filename: "style.[hash].css"
     }),
     new HtmlWebpackPlugin({
       template: LOCATION.INDEX_HTML_PATH
