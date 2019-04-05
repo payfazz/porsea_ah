@@ -14,6 +14,7 @@ const CircularDependencyPlugin = require("circular-dependency-plugin");
 
 var config = {
   mode: "development",
+  name: "client",
   entry: {
     addon: ["@babel/polyfill"],
     main: path.resolve(LOCATION.CURRENT_DIRECTORY, "./src/index.js")
@@ -106,6 +107,7 @@ var config = {
     }),
     new WebpackMd5Hash(),
     new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin()
   ]
 };

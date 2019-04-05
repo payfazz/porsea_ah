@@ -8,15 +8,17 @@ const path = require("path");
 const LOCATION = require("../location");
 
 const start = argv => {
-  const config = path.resolve(
-    __dirname,
-    "../config/webpack/dev.webpack.config.js"
-  );
+  const config = require("../config/webpack/dev.webpack.config.js");
+  const options = {
+    hot: true,
+    host: "localhost"
+  };
 
-  const compiler = webpack(require(config));
-
+  WebpackDevServer.addDevServerEntrypoints(config, options);
+  const compiler = webpack(config);
   const server = new WebpackDevServer(compiler, options);
   server.listen(argv.port);
+
   console.log("Project is running at http://localhost:" + argv.port);
 };
 
