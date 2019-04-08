@@ -6,16 +6,19 @@ const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const path = require("path");
 const LOCATION = require("../location");
+const checkWebpack = require("../checkPorseaConfig");
 
 const start = argv => {
   const config = require("../config/webpack/dev.webpack.config.js");
+  const newConfig = checkWebpack(config);
+
   const options = {
     hot: true,
     host: "localhost"
   };
 
-  WebpackDevServer.addDevServerEntrypoints(config, options);
-  const compiler = webpack(config);
+  WebpackDevServer.addDevServerEntrypoints(newConfig, options);
+  const compiler = webpack(newConfig);
   const server = new WebpackDevServer(compiler, options);
   server.listen(argv.port);
 

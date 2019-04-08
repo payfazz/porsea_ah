@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1 className="sassTest">Kondel asda</h1>
+        <h1 className="sassTest">Kondel</h1>
       </div>
     );
   }
