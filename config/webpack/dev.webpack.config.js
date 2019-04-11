@@ -2,6 +2,7 @@
 // Created by Cashfazz Team
 // To contribute visit: https://github.com/payfazz/porsea
 
+const fs = require("fs");
 const path = require("path");
 const LOCATION = require("../../location");
 const webpack = require("webpack");
@@ -94,6 +95,24 @@ var config = {
     mergeDuplicateChunks: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        PAGES: (() => {
+          const pagesPath = path.resolve(
+            LOCATION.CURRENT_TERMINAL_PATH,
+            "src/pages"
+          );
+
+          const res = fs.readdirSync(pagesPath).map(folder => ({
+            folderName: folder,
+            isIndexJSExists: fs.existsSync(
+              path.resolve(pagesPath, folder, "index.js")
+            )
+          }));
+          return JSON.stringify(res);
+        })()
+      }
+    }),
     new MiniCssExtractPlugin({
       filename: "style.[hash].css"
     }),

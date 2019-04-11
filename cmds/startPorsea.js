@@ -14,7 +14,8 @@ const start = argv => {
 
   const options = {
     hot: true,
-    host: "localhost"
+    host: "localhost",
+    historyApiFallback: true
   };
 
   WebpackDevServer.addDevServerEntrypoints(newConfig, options);

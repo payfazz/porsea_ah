@@ -5,13 +5,16 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-// import App from "./components/App";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import generateRoute from "../routing";
 
 class App extends React.Component {
   render() {
-    return <Router>{generateRoute()}</Router>;
+    return (
+      <BrowserRouter>
+        <Switch>{generateRoute()}</Switch>
+      </BrowserRouter>
+    );
   }
 }
 
