@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const LOCATION = require("./location");
+const LOCATION = require("./utils/location");
 
 const checkWebpack = defaultWebpackConfig => {
   if (

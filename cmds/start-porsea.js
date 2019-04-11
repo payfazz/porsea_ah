@@ -4,9 +4,7 @@
 
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const path = require("path");
-const LOCATION = require("../location");
-const checkWebpack = require("../checkPorseaConfig");
+const checkWebpack = require("../check-porsea-config");
 
 const start = argv => {
   const config = require("../config/webpack/dev.webpack.config.js");

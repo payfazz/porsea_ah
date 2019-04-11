@@ -5,8 +5,8 @@
 // To contribute visit: https://github.com/payfazz/porsea
 
 const yargs = require("yargs");
-const startPorsea = require("./cmds/startPorsea");
-const buildPorsea = require("./cmds/buildPorsea");
+const startPorsea = require("./cmds/start-porsea");
+const buildPorsea = require("./cmds/build-porsea");
 
 const argv = yargs
   .command(

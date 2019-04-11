@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const LOCATION = require("../../location");
+const LOCATION = require("../../utils/location");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -18,7 +18,7 @@ var config = {
   name: "client",
   entry: {
     addon: ["@babel/polyfill"],
-    main: path.resolve(LOCATION.CURRENT_DIRECTORY, "./src/index.js")
+    main: path.resolve(LOCATION.PORSEA_DIRECTORY, "./src/index.js")
   },
   output: {
     path: path.resolve(LOCATION.CURRENT_TERMINAL_PATH, "build"),

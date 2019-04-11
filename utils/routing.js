@@ -7,7 +7,7 @@ const filterIndexJSIsExist = pages =>
 
 const mapObjectToRoute = pages =>
   pages.map(({ folderName }) => {
-    const Page = require("../../src/pages/" + folderName).default;
+    const Page = require("../../../src/pages/" + folderName).default;
     if (Page.navigationOptions) {
       return (
         <Route
@@ -28,7 +28,5 @@ const generateRoute = () =>
     mapObjectToRoute,
     filterIndexJSIsExist
   )(process.env.PAGES);
-
-console.log(process.env.PAGES);
 
 export default generateRoute;
