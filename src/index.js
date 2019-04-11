@@ -5,6 +5,14 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import { BrowserRouter as Router } from "react-router-dom";
+// import App from "./components/App";
+import generateRoute from "../routing";
+
+class App extends React.Component {
+  render() {
+    return <Router>{generateRoute()}</Router>;
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById("app"));
