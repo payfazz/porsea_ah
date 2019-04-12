@@ -2,8 +2,10 @@
 // Created by Cashfazz Team
 // To contribute visit: https://github.com/payfazz/porsea
 
+const fs = require("fs");
 const path = require("path");
 const LOCATION = require("../../utils/location");
+const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -16,10 +18,10 @@ var config = {
   mode: "production",
   entry: {
     addon: ["@babel/polyfill"],
-    main: path.resolve(LOCATION.ROOT_PATH, "./src/index.js")
+    main: path.resolve(LOCATION.PORSEA_DIRECTORY, "./src/index.js")
   },
   output: {
-    path: path.resolve(LOCATION.ROOT_PATH, "build"),
+    path: path.resolve(LOCATION.CURRENT_TERMINAL_PATH, "build"),
     filename: "[name].[contenthash].js"
   },
   module: {
@@ -100,6 +102,24 @@ var config = {
     mergeDuplicateChunks: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        PAGES: (() => {
+          const pagesPath = path.resolve(
+            LOCATION.CURRENT_TERMINAL_PATH,
+            "src/pages"
+          );
+
+          const res = fs.readdirSync(pagesPath).map(folder => ({
+            folderName: folder,
+            isIndexJSExists: fs.existsSync(
+              path.resolve(pagesPath, folder, "index.js")
+            )
+          }));
+          return JSON.stringify(res);
+        })()
+      }
+    }),
     new MiniCssExtractPlugin({
       filename: "style.[contenthash].css"
     }),
