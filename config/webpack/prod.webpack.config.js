@@ -12,6 +12,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
+const TransformRemoveConsole = require("babel-plugin-transform-remove-console");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
 var config = {
@@ -152,6 +153,7 @@ var config = {
     }),
     new WebpackMd5Hash(),
     new CleanWebpackPlugin(),
+    new TransformRemoveConsole(),
     new DashboardPlugin()
   ]
 };
