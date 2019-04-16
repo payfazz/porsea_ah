@@ -5,15 +5,15 @@
 
 import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";
-import { HashRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import generateRoute from "../utils/routing";
 
 class App extends PureComponent {
   get renderBody() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Switch>{generateRoute()}</Switch>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 

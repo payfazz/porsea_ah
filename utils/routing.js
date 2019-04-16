@@ -16,11 +16,9 @@ const mapObjectToRoute = pages =>
           {...Page.navigationOptions()}
         />
       );
-    } else {
-      return (
-        <Route key={folderName} component={Page} path={"/" + folderName} />
-      );
     }
+
+    return <Route key={folderName} component={Page} path={"/" + folderName} />;
   });
 
 const generateRoute = () =>
