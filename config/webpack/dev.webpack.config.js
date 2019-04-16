@@ -125,6 +125,10 @@ var config = {
             )
           }));
           return JSON.stringify(res);
+        })(),
+        IS_APP_EXISTS: (() => {
+          const appPath = path.resolve(process.cwd(), "src/app.js");
+          return fs.existsSync(appPath);
         })()
       }
     }),
