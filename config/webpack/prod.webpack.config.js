@@ -32,7 +32,8 @@ var config = {
           loader: "babel-loader",
           options: {
             cacheDirectory: true,
-            presets: ["@babel/preset-env", "@babel/preset-react"]
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+            plugins: [["import", { libraryName: "antd", style: true }]]
           }
         }
       },
@@ -43,6 +44,20 @@ var config = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "less-loader",
+            options: {
+              javascriptEnabled: true
+            }
+          }
         ]
       },
       {
