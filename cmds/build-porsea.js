@@ -3,7 +3,7 @@
 // To contribute visit: https://github.com/payfazz/porsea
 
 const webpack = require("webpack");
-const config = require("../config/webpack/dev.webpack.config");
+const config = require("../config/webpack/prod.webpack.config");
 
 const build = _ => {
   webpack(config, (err, stats) => {
