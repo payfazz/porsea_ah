@@ -12,7 +12,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
-const TransformRemoveConsole = require("babel-plugin-transform-remove-console");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
 var config = {
@@ -34,7 +33,10 @@ var config = {
           options: {
             cacheDirectory: true,
             presets: ["@babel/preset-env", "@babel/preset-react"],
-            plugins: [["import", { libraryName: "antd", style: true }]]
+            plugins: [
+              ["import", { libraryName: "antd", style: true }],
+              "transform-remove-console"
+            ]
           }
         }
       },
@@ -153,7 +155,6 @@ var config = {
     }),
     new WebpackMd5Hash(),
     new CleanWebpackPlugin(),
-    new TransformRemoveConsole(),
     new DashboardPlugin()
   ]
 };
