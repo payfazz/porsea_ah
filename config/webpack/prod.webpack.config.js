@@ -92,6 +92,12 @@ var config = {
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
+      },
+      {
+        test: /\.(md)$/,
+        use: {
+          loader: "ignore-loader"
+        }
       }
     ]
   },
