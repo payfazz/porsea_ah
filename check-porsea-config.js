@@ -5,10 +5,13 @@ const LOCATION = require("./utils/location");
 const checkWebpack = defaultWebpackConfig => {
   if (
     fs.existsSync(
-      path.resolve(LOCATION.CURRENT_TERMINAL_PATH + "porsea.config.js")
+      path.resolve(LOCATION.CURRENT_TERMINAL_PATH, "./porsea.config.js")
     )
   ) {
-    const overrideWebpackConfig = require(process.cwd() + "/porsea.config.js");
+    const overrideWebpackConfig = require(path.resolve(
+      LOCATION.CURRENT_TERMINAL_PATH,
+      "./porsea.config.js"
+    ));
     const webpackConfig = overrideWebpackConfig(defaultWebpackConfig);
 
     return webpackConfig.customWebpack;

@@ -68,7 +68,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/image/[name]-[hash].[ext]",
+            name: "assets/image/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
@@ -78,7 +78,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/media/[name]-[hash].[ext]",
+            name: "assets/media/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
@@ -88,7 +88,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/font/[name]-[hash].[ext]",
+            name: "assets/font/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
@@ -142,7 +142,7 @@ var config = {
       }
     }),
     new MiniCssExtractPlugin({
-      filename: "style.[hash].css"
+      filename: "style.[contenthash].css"
     }),
     new HtmlWebpackPlugin({
       template: LOCATION.INDEX_HTML_PATH

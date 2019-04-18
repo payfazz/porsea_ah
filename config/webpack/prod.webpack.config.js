@@ -22,7 +22,7 @@ var config = {
   },
   output: {
     path: path.resolve(LOCATION.CURRENT_TERMINAL_PATH, "build"),
-    filename: "[name].[contenthash].js"
+    filename: "[name].[hash].js"
   },
   module: {
     rules: [
@@ -35,7 +35,8 @@ var config = {
             presets: ["@babel/preset-env", "@babel/preset-react"],
             plugins: [
               ["import", { libraryName: "antd", style: true }],
-              "transform-remove-console"
+              "transform-remove-console",
+              "@babel/plugin-proposal-class-properties"
             ]
           }
         }
@@ -68,7 +69,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/image/[name]-[hash].[ext]",
+            name: "assets/image/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
@@ -78,7 +79,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/media/[name]-[hash].[ext]",
+            name: "assets/media/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }
@@ -88,7 +89,7 @@ var config = {
         use: {
           loader: "file-loader",
           options: {
-            name: "assets/font/[name]-[hash].[ext]",
+            name: "assets/font/[name]-[contenthash].[ext]",
             publicPath: LOCATION.PUBLIC_PATH
           }
         }

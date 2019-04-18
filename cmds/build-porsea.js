@@ -4,9 +4,12 @@
 
 const webpack = require("webpack");
 const config = require("../config/webpack/prod.webpack.config");
+const checkWebpack = require("../check-porsea-config");
 
 const build = _ => {
-  webpack(config, (err, stats) => {
+  const newConfig = checkWebpack(config);
+
+  webpack(newConfig, (err, stats) => {
     if (err) {
       console.log(err);
     }
