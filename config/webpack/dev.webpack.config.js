@@ -33,7 +33,10 @@ var config = {
           options: {
             cacheDirectory: true,
             presets: ["@babel/preset-env", "@babel/preset-react"],
-            plugins: [["import", { libraryName: "antd", style: true }]]
+            plugins: [
+              ["import", { libraryName: "antd", style: true }],
+              ["@babel/plugin-proposal-class-properties"]
+            ]
           }
         }
       },
