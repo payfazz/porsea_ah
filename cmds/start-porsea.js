@@ -4,17 +4,17 @@
 
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const checkWebpack = require("../check-porsea-config");
+const applyPorseaConfig = require("../utils/porsea-config");
 
 const start = argv => {
   const config = require("../config/webpack/dev.webpack.config.js");
-  const newConfig = checkWebpack(config);
-
   const options = {
     hot: true,
     host: "localhost",
     historyApiFallback: true
   };
+
+  const newConfig = applyPorseaConfig(config);
 
   WebpackDevServer.addDevServerEntrypoints(newConfig, options);
   const compiler = webpack(newConfig);

@@ -126,10 +126,13 @@ var config = {
     removeEmptyChunks: true,
     mergeDuplicateChunks: true
   },
+  resolve: {
+    alias: {}
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        PAGES: (() => {
+        FOLDER_IN_PAGES: (() => {
           const pagesPath = path.resolve(
             LOCATION.CURRENT_TERMINAL_PATH,
             "src/pages"
@@ -141,10 +144,15 @@ var config = {
               path.resolve(pagesPath, folder, "index.js")
             )
           }));
+
           return JSON.stringify(res);
         })(),
         IS_APP_EXISTS: (() => {
-          const appPath = path.resolve(process.cwd(), "src/app.js");
+          const appPath = path.resolve(
+            LOCATION.CURRENT_TERMINAL_PATH,
+            "src/app.js"
+          );
+
           return fs.existsSync(appPath);
         })()
       }

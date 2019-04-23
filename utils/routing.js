@@ -21,10 +21,11 @@ const mapObjectToRoute = pages =>
     return <Route key={folderName} component={Page} path={"/" + folderName} />;
   });
 
+const folderInPages = JSON.parse(process.env.FOLDER_IN_PAGES);
 const generateRoute = () =>
   compose(
     mapObjectToRoute,
     filterIndexJSIsExist
-  )(process.env.PAGES);
+  )(folderInPages);
 
 export default generateRoute;
