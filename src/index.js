@@ -7,6 +7,7 @@ import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch } from "react-router-dom";
 import generateRoute from "../utils/routing";
+import Container from "../../../src/app";
 
 class App extends PureComponent {
   get renderBody() {
@@ -18,12 +19,7 @@ class App extends PureComponent {
   }
 
   render() {
-    if (process.env.IS_APP_EXISTS) {
-      const Container = require("../../../src/app").default;
-      return <Container>{this.renderBody}</Container>;
-    }
-
-    return this.renderBody;
+    return <Container>{this.renderBody}</Container>;
   }
 }
 

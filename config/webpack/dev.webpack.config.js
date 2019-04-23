@@ -138,14 +138,6 @@ var config = {
           }));
 
           return JSON.stringify(res);
-        })(),
-        IS_APP_EXISTS: (() => {
-          const appPath = path.resolve(
-            LOCATION.CURRENT_TERMINAL_PATH,
-            "src/app.js"
-          );
-
-          return fs.existsSync(appPath);
         })()
       }
     }),
