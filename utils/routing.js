@@ -11,7 +11,11 @@ const mapObjectToRoute = pages => {
     <Switch>
       {pages.map(({ folderName }) => {
         const Page = require("../../../src/pages/" + folderName).default;
-        if (Page.navigationOptions) {
+        if (
+          Page.navigationOptions &&
+          typeof Page.navigationOptions() == "object" &&
+          Page.navigationOptions().hasOwnProperty("path")
+        ) {
           return (
             <Route
               key={Page.navigationOptions().path}
