@@ -12,7 +12,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
-const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 var config = {
   mode: "development",
@@ -35,7 +34,6 @@ var config = {
             cacheDirectory: true,
             presets: ["@babel/preset-env", "@babel/preset-react"],
             plugins: [
-              ["lodash"],
               ["@babel/plugin-proposal-class-properties"],
               ["import", { libraryName: "antd", style: true }]
             ]
@@ -157,8 +155,7 @@ var config = {
     new WebpackMd5Hash(),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin(),
-    new LodashModuleReplacementPlugin()
+    new DashboardPlugin()
   ]
 };
 

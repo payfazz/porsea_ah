@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import NotFoundPage from "../../../src/pages/notFound";
-import compose from "lodash/compose";
+import compose from "../lib/utils/compose";
 
 const filterIndexJSIsExist = pages =>
   pages.filter(({ isIndexJSExists }) => isIndexJSExists);
