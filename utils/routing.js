@@ -9,26 +9,30 @@ const filterIndexJSIsExist = pages =>
 const mapObjectToRoute = pages => {
   return (
     <Switch>
-      {pages.map(({ folderName }) => {
-        const Page = require("../../../src/pages/" + folderName).default;
-        if (
-          Page.navigationOptions &&
-          typeof Page.navigationOptions() == "object" &&
-          Page.navigationOptions().hasOwnProperty("path")
-        ) {
-          return (
-            <Route
-              key={Page.navigationOptions().path}
-              component={Page}
-              {...Page.navigationOptions()}
-            />
-          );
-        }
+      {pages
+        .filter(({ folderName }) =>
+          require(`../../../src/pages/${folderName}`).hasOwnProperty("default")
+        )
+        .map(({ folderName }) => {
+          const Page = require(`../../../src/pages/${folderName}`).default;
+          if (
+            Page.navigationOptions &&
+            typeof Page.navigationOptions() == "object" &&
+            Page.navigationOptions().hasOwnProperty("path")
+          ) {
+            return (
+              <Route
+                key={Page.navigationOptions().path}
+                component={Page}
+                {...Page.navigationOptions()}
+              />
+            );
+          }
 
-        return (
-          <Route key={folderName} component={Page} path={"/" + folderName} />
-        );
-      })}
+          return (
+            <Route key={folderName} component={Page} path={"/" + folderName} />
+          );
+        })}
       <Route path={"*"} component={NotFoundPage} />
     </Switch>
   );
