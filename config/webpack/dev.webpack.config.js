@@ -12,6 +12,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 var config = {
   mode: "development",
