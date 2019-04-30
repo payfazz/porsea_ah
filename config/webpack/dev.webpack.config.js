@@ -34,8 +34,9 @@ var config = {
             cacheDirectory: true,
             presets: ["@babel/preset-env", "@babel/preset-react"],
             plugins: [
-              ["import", { libraryName: "antd", style: true }],
-              ["@babel/plugin-proposal-class-properties"]
+              ["lodash"],
+              ["@babel/plugin-proposal-class-properties"],
+              ["import", { libraryName: "antd", style: true }]
             ]
           }
         }
@@ -155,7 +156,8 @@ var config = {
     new WebpackMd5Hash(),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin()
+    new DashboardPlugin(),
+    new LodashModuleReplacementPlugin()
   ]
 };
 
