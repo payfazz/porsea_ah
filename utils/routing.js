@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import NotFoundPage from "../../../src/pages/not-found";
+import NotFoundPage from "../../../src/pages/notFound";
 import compose from "./helper";
 
 const filterIndexJSIsExist = pages =>
