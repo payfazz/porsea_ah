@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "bin": {
-    "porsea": "./index.js"
+    "porsea": "./bin/index.js"
   },
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack/dev.webpack.config.js",
